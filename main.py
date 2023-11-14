@@ -8,6 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import json
 from get_class import get_class
 
+
 url = "https://veri.bet/odds-picks?filter=upcoming"
 
 def limpa_json():
@@ -36,9 +37,10 @@ def load_page(url:str):
     options.add_argument(argument='--disable-popup-blocking') # pop-ups
     options.add_argument(argument='--disable-gpu') # aceleração de hardware
     
-    
+    # Define o navegador como firefox e set as configs
     driver = webdriver.Firefox(options=options)
-    
+
+    # Navega até o site
     driver.get(url=url)
     
     try:
@@ -60,4 +62,6 @@ def load_page(url:str):
             i += 1
         get_class(content=itens)
 
-load_page(url=url)
+
+if __name__ == "__main__":
+    load_page(url=url)
